@@ -11,6 +11,7 @@
     <modules>
         <module>VM-demo</module>
         <module>Algorithm-demo</module>
+        <module>Spring-demo</module>
     </modules>
 
 

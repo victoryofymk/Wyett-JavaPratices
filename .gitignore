@@ -83,3 +83,5 @@ hs_err_pid*
 /.idea/misc.xml
 /.idea/vcs.xml
 /.idea/inspectionProfiles/Project_Default.xml
+/.idea/encodings.xml
+/.idea/deployment.xml
