@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <bean id="daoImpl" class="beans.proxy.DaoImpl"/>
+    <bean id="daoNoImpl" class="beans.proxy.DaoNoImpl"/>
+    <bean id="timeHandler" class="beans.proxy.aop.TimeHandler"/>
+
+    <aop:config>
+        <aop:pointcut id="addJdkMethod" expression="execution(* beans.proxy.Dao.*(..))"/>
+        <aop:aspect id="time" ref="timeHandler">
+            <aop:before method="beforeAdvice" pointcut-ref="addJdkMethod"/>
+            <aop:after method="afterAdvice" pointcut-ref="addJdkMethod"/>
+            <aop:around method="printTime" pointcut-ref="addJdkMethod"/>
+        </aop:aspect>
+    </aop:config>
+
+    <aop:config>
+        <aop:pointcut id="addAllMethod" expression="execution(* beans.proxy.DaoNoImpl.*(..))"/>
+        <aop:aspect id="time" ref="timeHandler">
+            <aop:before method="beforeAdvice" pointcut-ref="addAllMethod"/>
+            <aop:after method="afterAdvice" pointcut-ref="addAllMethod"/>
+            <aop:around method="printTime" pointcut-ref="addAllMethod"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

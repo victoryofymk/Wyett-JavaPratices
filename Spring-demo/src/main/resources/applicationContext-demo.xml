@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--描述信息-->
+    <description>Spring Configuration</description>
+
+    <!--启动@AspectJ支持-->
+    <aop:aspectj-autoproxy/>
+
+    <!--开启组件自动扫描,作用：
+    1.默认扫描Spring提供的@Component， @Repository， @Service，@Controller、@RestController、@ControllerAdvice和@Configuration等注解的类。
+    2.默认开启annotation注解配置，激活@Required，@Autowired， @PostConstruct， @PreDestroy， @WyattResource， @PersistenceContext， @PersistenceUnit组件类中的注释。
+    -->
+    <context:component-scan base-package="*">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!--属性文件替换-->
+    <context:property-placeholder location="file:${user.dir}/config/jdbc.properties" ignore-unresolvable="true"/>
+
+    <!-- 扫描basePackage下所有以@MyBatisRepository标识的 接口-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.it.ymk"/>
+        <property name="annotationClass" value="MyBatisRepository"/>
+    </bean>
+
+
+</beans>
