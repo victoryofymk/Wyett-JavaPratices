@@ -14,6 +14,7 @@
         <module>Spring-demo</module>
         <module>Java-core</module>
         <module>springboot-demo</module>
+        <module>utils-demo</module>
     </modules>
 
 

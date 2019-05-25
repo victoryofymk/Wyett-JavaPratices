@@ -6,7 +6,7 @@ package beans.proxy;
  * @author yanmingkun
  * @date 2019-03-12 10:34
  */
-public interface Dao {
+public interfaceuse Dao {
 
     public void insert();
 

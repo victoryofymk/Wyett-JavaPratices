@@ -8,7 +8,7 @@ import beans.ioc.WyattBeanDefinition;
  * @author yanmingkun
  * @date 2018-11-26 13:43
  */
-public interface WyattBeanFactory {
+public interfaceuse WyattBeanFactory {
     /**
      * @param bean
      * @throws Exception

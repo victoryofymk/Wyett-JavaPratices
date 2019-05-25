@@ -4,7 +4,7 @@ package reflect.proxy.jdk;
  * @author yanmingkun
  * @date 2018-12-20 15:35
  */
-public interface UserService {
+public interfaceuse UserService {
     /**
      * 接口方法
      */
